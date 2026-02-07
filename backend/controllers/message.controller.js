@@ -8,15 +8,15 @@
 const Message = require('../models/message.model.js');
 
 // controllers/message.controller.js
-const Hello = (req, res, next)  => {
-  res.status(200).send(
-    {
-        message: 'Hello, World! from the server this is a test message',
-        sender : 'Server'
-    }
-  );
-   console.log('Hello, World! from the server this is a test message');
-   next();
+const Hello = (req, res, next) => {
+    res.status(200).send(
+        {
+            message: 'Hello, World! from the server this is a test message',
+            sender: 'Server'
+        }
+    );
+    console.log('Hello, World! from the server this is a test message');
+    next();
 };
 
 const FetchALL = async (req, res, next) => {
@@ -24,8 +24,8 @@ const FetchALL = async (req, res, next) => {
         // get all messages from the database
         const getMessages = await Message.find({});
         if (getMessages.length === 0) {
-           res.status(404).send(
-                { 
+            res.status(404).send(
+                {
                     error: 'No messages found in the database.'
                 }
             );
@@ -46,7 +46,7 @@ const FetchALL = async (req, res, next) => {
         res.status(500).send(
             {
                 error: 'An error occurred while processing the request.'
-            }        );    
+            });
         return;
     }
 };
@@ -56,10 +56,10 @@ const FindHello = async (req, res, next) => {
         const id = req.params.id;
 
         // get message from the database
-        const getMessage = await Message.find({sender: id});
+        const getMessage = await Message.find({ sender: id });
         if (getMessage.length === 0) {
-           res.status(404).send(
-                { 
+            res.status(404).send(
+                {
                     error: 'Message not found for the given sender ID.'
                 }
             );
@@ -70,7 +70,8 @@ const FindHello = async (req, res, next) => {
         res.status(200).send(
             {
                 message: 'Message retrieved successfully.',
-                data: getMessage
+                //data ----> datas it's a change to practice we made in the frontend
+                datas: getMessage
             }
         );
         console.log('Message retrieved successfully.');
@@ -81,7 +82,7 @@ const FindHello = async (req, res, next) => {
             {
                 error: 'An error occurred while processing the request.'
             }
-        );    
+        );
         return;
     }
 };
@@ -92,14 +93,14 @@ const UpdateHello = async (req, res, next) => {
 
         // Update message from the database
         const UpdateMessage = await Message.findOneAndUpdate(
-            {sender: id}, 
-            {message: req.body.message}, 
-            {new: true}
+            { sender: id },
+            { message: req.body.message },
+            { new: true }
         );
 
         if (!UpdateMessage) {
-           res.status(404).send(
-                { 
+            res.status(404).send(
+                {
                     error: 'Message not found for the given sender ID.'
                 }
             );
@@ -121,7 +122,7 @@ const UpdateHello = async (req, res, next) => {
             {
                 error: 'An error occurred while processing the request.'
             }
-        );    
+        );
         return;
     }
 };
@@ -131,10 +132,10 @@ const DeleteHello = async (req, res, next) => {
         const id = req.params.id;
 
         // delete the message to the database
-        const deleteMessage = await Message.deleteMany({sender: id});
+        const deleteMessage = await Message.deleteMany({ sender: id });
         if (deleteMessage.deletedCount === 0) {
             res.status(404).send(
-                { 
+                {
                     error: 'Message not found for the given sender ID.'
                 }
             );
@@ -143,20 +144,20 @@ const DeleteHello = async (req, res, next) => {
             return;
         }
         res.status(200).send(
-        {
-            message: 'Message deleted successfully.',
-            data: deleteMessage
-        }
-    );
-    console.log('Message deleted successfully for id : ' + id);
-    next();
-    }catch (error) {
+            {
+                message: 'Message deleted successfully.',
+                data: deleteMessage
+            }
+        );
+        console.log('Message deleted successfully for id : ' + id);
+        next();
+    } catch (error) {
         console.error('Error processing the request:', error);
         res.status(500).send(
             {
                 error: 'An error occurred while processing the request.'
             }
-        );    
+        );
         return;
     }
 };
@@ -168,7 +169,7 @@ const DeleteAll = async (req, res, next) => {
         const deleteMessages = await Message.deleteMany({});
         if (deleteMessages.deletedCount === 0) {
             res.status(404).send(
-                { 
+                {
                     error: 'There are no messages in the database.'
                 }
             );
@@ -177,20 +178,20 @@ const DeleteAll = async (req, res, next) => {
             return;
         }
         res.status(200).send(
-        {
-            message: 'All messages deleted successfully.',
-            data: deleteMessages
-        }
-    );
-    console.log('All messages deleted successfully.');
-    next();
-    }catch (error) {
+            {
+                message: 'All messages deleted successfully.',
+                data: deleteMessages
+            }
+        );
+        console.log('All messages deleted successfully.');
+        next();
+    } catch (error) {
         console.error('Error processing the request:', error);
         res.status(500).send(
             {
                 error: 'An error occurred while processing the request.'
             }
-        );    
+        );
         return;
     }
 };
@@ -198,8 +199,8 @@ const DeleteAll = async (req, res, next) => {
 const SayHello = async (req, res, next) => {
     try {
         const id = req.params.id;
-        const {message} = req.body;
-        if(!message){
+        const { message } = req.body;
+        if (!message) {
             res.status(400).send(
                 {
                     error: 'Message parameter is required in the request body.'
@@ -218,21 +219,21 @@ const SayHello = async (req, res, next) => {
             }
         );
         res.status(200).send(
-        {
-            message: 'Message received successfully.',
-            data: newMessage
-        }
-    );
-    console.log('Message received successfully from id : ' + id);
-    console.log(`${JSON.stringify(req.body)}`);
-    next();
-    }catch (error) {
+            {
+                message: 'Message received successfully.',
+                data: newMessage
+            }
+        );
+        console.log('Message received successfully from id : ' + id);
+        console.log(`${JSON.stringify(req.body)}`);
+        next();
+    } catch (error) {
         console.error('Error processing the request:', error);
         res.status(500).send(
             {
                 error: 'An error occurred while processing the request.'
             }
-        );    
+        );
         return;
     }
 };
