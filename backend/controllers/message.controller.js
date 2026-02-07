@@ -170,7 +170,7 @@ const DeleteAll = async (req, res, next) => {
         if (deleteMessages.deletedCount === 0) {
             res.status(404).send(
                 {
-                    error: 'There are no messages in the database.'
+                    error: 'There is no one here (: (All messages deleted).'
                 }
             );
             console.log('Tere are no messages in the database.');
