@@ -40,12 +40,12 @@ mongoose.connect(MONGO_URL)
         console.log('Connected to the database successfully.');
         // Middleware to handle CORS
         app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
+            console.log(`Server is running on port ${PORT}`);
         });
     })
     .catch((error) => {
         console.error('Error connecting to the database:', error);
-});
+    });
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -57,10 +57,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/messages', MessageRoutes);
 
 // Main route
-app.get('/', (req, res , next) => {
-  res.status(200).send('Hello to the Express server!');
-  console.log('Hello to the Express server!');
-  next();
+app.get('/', (req, res, next) => {
+    res.status(200).send('Hello to the Express server!');
+    console.log('Hello to the Express server!');
+    next();
 }, seperater);
 
 // Middleware functions

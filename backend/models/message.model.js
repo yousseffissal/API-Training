@@ -15,9 +15,9 @@ const MessageSchema = new mongoose.Schema({
         required: [true, "Receiver parameter is required in the request body"]
     },
 },
-{
-    timestamps: true
-}
+    {
+        timestamps: true
+    }
 );
 
 // make the name of the schema in the database "Message" and not "Messages" cus mongoose will automatically pluralize the name of the schema and make it "Messages" if we don't specify it like this, and also we can specify the collection name in the database by passing a third argument to the mongoose.model() function like this : mongoose.model("Message", MessageSchema, "this-is-collection-name") , but if we don't specify it, mongoose will automatically create a collection with the pluralized name of the schema which is "Messages" in this case.
