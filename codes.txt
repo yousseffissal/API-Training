@@ -1,0 +1,56 @@
+Frontend :
+=> npm create vite@latest :
+------------------------
+create a vite project we chose for the name of the project  "." to create it in the courant folder if not we type the name and it will create the project in a new folder with the name that we chose  and we chose the type of the project which is a react project and the programming language which is JS or typescript depends on our preffrences this will install the packages that we need
+
+=> npm i axios :
+------------------------
+to enable sending data between the frontend and the backend it's a package that allows that
+
+=> npm i cors :
+------------------------
+if you want to allow requests from any origin you can just use app.use(cors()) without any options, if we don't use CORS middleware, the frontend will not be able to make requests to the backend if they are running on different ports, and we will get a CORS error in the browser console we install it in the backend or the frontend depending on where you want to use it, but in this case we need to install it in the backend because we want to allow requests from the frontend to the backend.
+
+=> npm run <the name of the script> :
+------------------------------------
+we use it to run some script that we name it in the json file of the backend/frontend we can find the scripts in the package.json file or make new ones
+(npm run dev : in the backend folder to run the server and in the frontend folder to run the frontend as I do)
+
+=> to install tailwind follow the steps in this link better use this version : https://v3.tailwindcss.com/docs/guides/vite
+you can do more like make your own classes in more after you learn the basics for now just learn how to install it in your vite project (instal Tailwind CSS IntelliSense extension for autocompleting)
+
+=> in the src file you can delete the App.css and the assets folder if you want leave just the app.jsx that we will work on (delete everything and use the code rfce to write a clean one / you need to install the extention for it) and the index.css that we will use to link the tailwindcss classes with the index.html which is the main html that we will se in the browser (we can change the name of the page in it) and the main.jsx which is the main app that will use the app that we will make in App.jsx  (using modes, providers etc)
+
+backend :
+=> npm init -y :
+------------------------------
+this will initiaize the backend folder for us
+
+=> npm install express :
+-----------------------------
+this is a a node js library that will help us to make our server (here in the backend folder we install the cors package to enable sending requests from the frontend to the backend and to controll if we can accept them fro any ports or just the port that we chose in the process)
+
+=> npm install mongoose / => npm install mongodb :
+----------------------------------------------------
+this will install the necessairy packages for mongodb and use it in the project dependencies + mongoose will allow us to connecte and function in our mongodb databases such as creating models and manipulating data in the DB
+
+=> npm install nodemon -D :
+-------------------------------------------
+this will install the nodemon tools as a devDependencie to rerun the server automaticaly after every change we do in the code to use it make a new script such as 'dev' and make it as 'nodemon <the name of the main file for your server>' in the package.json file and in the terminal run one time the the commande 'npm run dev' this will lunch the server and everytime we make a change there will be no need to rerun the server cus it will be running automaticaly by nodemon
+
+=> npm install dotenv :
+--------------------------
+this package will alow us to use the variables in an .env file use it in the frontend or the backend dependes on were you want to use them
+
+
+
+
+
+
+
+
+
+
+
+
+

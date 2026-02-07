@@ -1,0 +1,79 @@
+These are some exemples to try the CRUD API that we make : 
+-----------------------------------------------------------------------------------------
+
+Send a message to te DB By ID :
+    http://localhost:8090/messages/SayHello/Fissal?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "This is a test 1 !"
+        }
+
+    http://localhost:8090/messages/SayHello/Youssef?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "This is a test 2 !"
+        }
+
+-----------------------------------------------------------------------------------------
+
+Show all messages in the DB :
+    http://localhost:8090/messages/FetchALL?loggedIn=true&admin=true
+
+-----------------------------------------------------------------------------------------
+
+Find a message in the DB By ID :
+    http://localhost:8090/messages/FindHello/Fissal?loggedIn=true&admin=true
+
+    http://localhost:8090/messages/FindHello/Youssef?loggedIn=true&admin=true
+
+-----------------------------------------------------------------------------------------
+
+Update a message in the DB By ID :
+    http://localhost:8090/messages/UpdateHello/Fissal?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "Message changing 1 !"
+        }
+
+    http://localhost:8090/messages/UpdateHello/Youssef?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "Message changing 2 !"
+        }
+
+-----------------------------------------------------------------------------------------
+
+Delete the messages of an ID from the DB :
+    http://localhost:8090/messages/DeleteHello/Fissal?loggedIn=true&admin=true
+
+    Cheking the messages in the DB :
+    http://localhost:8090/messages/FetchALL?loggedIn=true&admin=true (the message of ID = Fissal are deleted)
+
+    http://localhost:8090/messages/DeleteHello/Youssef?loggedIn=true&admin=true
+
+    Cheking the messages in the DB :
+    http://localhost:8090/messages/FetchALL?loggedIn=true&admin=true (the message of ID = Youssef are deleted)
+
+-----------------------------------------------------------------------------------------
+
+Send again the messages to the DB :
+    http://localhost:8090/messages/SayHello/Fissal?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "This is a test 1 !"
+        }
+
+    http://localhost:8090/messages/SayHello/Youssef?loggedIn=true&admin=true
+    JSON:
+        {
+            "message": "This is a test 2 !"
+        }
+
+-----------------------------------------------------------------------------------------
+
+Delete All the messages from the DB :
+    http://localhost:8090/messages/DeleteAll?loggedIn=true&admin=true
+
+    Cheking the messages in the DB :
+    http://localhost:8090/messages/FetchALL?loggedIn=true&admin=true (all the messages are deleted at once)
+
