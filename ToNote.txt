@@ -1,0 +1,7 @@
+How we can add braking point in tailwind (tailwind.config.js)
+------------------------------------------------------------------------
+How the useEffecte helps us to make a timer for the "post" success message (cus we can't use setTimeout methode directly to manipulate the DOM) (Section2.js line 75)
+------------------------------------------------------------------------
+How we used hooks to fetch data from the backend and sending it also using axios and display it in the front using buttons with these hooks
+------------------------------------------------------------------------
+How we make a loader in our porject using useState methode and using it's function in the hooks and the variable in the frontend to display data (Section 1 & 2 + messagesHook.js we use the function in the try/catch blocks and the variable to disable inputs and buttons while processing a request)
