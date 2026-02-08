@@ -13,12 +13,14 @@ export const messagesHook = () => {
     const [error, setError] = useState('')
     const [Request, setRequest] = useState('')
     const [post, setPost] = useState('')
+    const [update, setUpdate] = useState('')
     const [loading, setLoading] = useState(false);
     const [successMsg, setSuccessMsg] = useState("");
+    const [UpdatesuccessMsg, setUpdatesuccessMsg] = useState("");
 
 
     // This effect shows the success message for a short time
-    // When successMsg changes and is not empty, a timer starts
+    // When successMsg and UpdatesuccessMsg changes and are not empty, a timer starts
     // After 2 seconds, the message is cleared automatically
     // The cleanup function prevents memory leaks by clearing the timeout
     // if the component re-renders or unmounts
@@ -27,11 +29,20 @@ export const messagesHook = () => {
 
         const timer = setTimeout(() => {
             setSuccessMsg("");
-        }, 1000);
+        }, 2000);
 
         return () => clearTimeout(timer);
     }, [successMsg]);
 
+    useEffect(() => {
+        if (!UpdatesuccessMsg) return;
+
+        const timer = setTimeout(() => {
+            setUpdatesuccessMsg("");
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, [UpdatesuccessMsg]);
 
     // Function to fetch message data from the backend API based on the sender input
     const fetchMessage = async () => {
@@ -213,19 +224,61 @@ export const messagesHook = () => {
 
     }
 
+    const updateMessage = async () => {
+        try {
+            setLoading(true);
+            setError('')
+            setResult(null)
+            setRequest('UpdateMessage')
+
+            if (!sender.trim()) {
+                setError('Please enter a sender name to update')
+                setLoading(false);
+                return;
+            }
+
+            const response = await axios.patch(
+                `${API_URL}/messages/UpdateHello/${sender}`,
+                {
+                    message: update
+                },
+                {
+                    params: {
+                        loggedIn: true,
+                        admin: true,
+                    },
+                }
+            )
+
+            setResult(response.data)
+            setUpdatesuccessMsg(`First message updated successfully for : ${sender}`);
+
+        } catch (err) {
+            setError(
+                err.response?.data?.error || 'Error while updating data'
+            )
+        } finally {
+            setLoading(false);
+        }
+
+    }
+
     return {
         loading,
         successMsg,
+        UpdatesuccessMsg,
         sender,
-        setSender,
-        setPost,
         result,
         error,
         Request,
+        setSender,
+        setPost,
+        setUpdate,
         fetchMessage,
         deleteMessage,
         deleteAll,
         fetchAll,
-        postMessage
+        postMessage,
+        updateMessage
     };
 };
