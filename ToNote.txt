@@ -1,4 +1,4 @@
-How we can add braking point in tailwind (tailwind.config.js)
+How we can add braking point in tailwind (tailwind.config.js) / we need to rerun the frontend after each change
 ------------------------------------------------------------------------
 How the useEffecte helps us to make a timer for the "post" success message (cus we can't use setTimeout methode directly to manipulate the DOM) (Section2.js line 75)
 ------------------------------------------------------------------------
