@@ -12,6 +12,7 @@ function Section2() {
         successMsg,
         setSender,
         setPost,
+        // We will need the result statevariable to manage the update function in our messges hook
         result,
         error,
         Request,
