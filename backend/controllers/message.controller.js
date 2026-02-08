@@ -145,7 +145,7 @@ const DeleteHello = async (req, res, next) => {
         }
         res.status(200).send(
             {
-                message: 'Message deleted successfully.',
+                message: 'Messages deleted successfully for this sender',
                 data: deleteMessage
             }
         );

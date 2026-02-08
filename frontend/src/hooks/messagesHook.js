@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // we seprated the logic of fetching and managing messages from the UI components by creating a custom hook called useMessages, this hook encapsulates all the logic related to fetching messages from the backend API, managing the state of the sender input, handling errors, and storing the results, and we can use this hook in any component that needs to interact with the messages API without having to duplicate the logic in each component, this promotes code reusability and separation of concerns in our React application.
@@ -13,15 +13,37 @@ export const messagesHook = () => {
     const [error, setError] = useState('')
     const [Request, setRequest] = useState('')
     const [post, setPost] = useState('')
+    const [loading, setLoading] = useState(false);
+    const [successMsg, setSuccessMsg] = useState("");
+
+
+    // This effect shows the success message for a short time
+    // When successMsg changes and is not empty, a timer starts
+    // After 2 seconds, the message is cleared automatically
+    // The cleanup function prevents memory leaks by clearing the timeout
+    // if the component re-renders or unmounts
+    useEffect(() => {
+        if (!successMsg) return;
+
+        const timer = setTimeout(() => {
+            setSuccessMsg("");
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    }, [successMsg]);
+
 
     // Function to fetch message data from the backend API based on the sender input
     const fetchMessage = async () => {
         if (!sender.trim()) {
-            setError('Please enter a sender name')
-            return
+            setError('Please enter a sender name to fetch')
+            setLoading(false);
+            return;
         }
 
+
         try {
+            setLoading(true);
             setError('')
             setResult(null)
             setRequest('FetchMessage') // Set the current request type to FetchMessage
@@ -48,16 +70,21 @@ export const messagesHook = () => {
             setError(
                 err.response?.data?.error || 'Error while fetching data'
             )
+        } finally {
+            setLoading(false);
         }
     }
 
     const deleteMessage = async () => {
         if (!sender.trim()) {
-            setError('Please enter a sender name')
-            return
+            setError('Please enter a sender name to delete')
+            setLoading(false);
+            return;
         }
 
+
         try {
+            setLoading(true);
             setError('')
             setResult(null)
             setRequest('DeleteMessage')
@@ -79,12 +106,15 @@ export const messagesHook = () => {
             setError(
                 err.response?.data?.error || 'Error while deleting data'
             )
+        } finally {
+            setLoading(false);
         }
 
     }
 
     const deleteAll = async () => {
         try {
+            setLoading(true);
             setError('')
             setResult(null)
             setRequest('DeleteAll')
@@ -106,12 +136,15 @@ export const messagesHook = () => {
             setError(
                 err.response?.data?.error || 'Error while deleting data'
             )
+        } finally {
+            setLoading(false);
         }
 
     }
 
     const fetchAll = async () => {
         try {
+            setLoading(true);
             setError('')
             setResult(null)
             setRequest('FetchAll')
@@ -133,20 +166,25 @@ export const messagesHook = () => {
             setError(
                 err.response?.data?.error || 'Error while fetching data'
             )
+        } finally {
+            setLoading(false);
         }
 
     }
 
     const postMessage = async () => {
         try {
+            setLoading(true);
             setError('')
             setResult(null)
             setRequest('PostMessage')
 
             if (!sender.trim()) {
-                setError('Please enter a sender name')
-                return
+                setError('Please enter a sender name to post')
+                setLoading(false);
+                return;
             }
+
 
             const response = await axios.post(
                 `${API_URL}/messages/SayHello/${sender}`,
@@ -163,16 +201,21 @@ export const messagesHook = () => {
 
 
             setResult(response.data)
+            setSuccessMsg(`Message posted successfully from : ${sender}`);
 
         } catch (err) {
             setError(
                 err.response?.data?.error || 'Error while posting data'
             )
+        } finally {
+            setLoading(false);
         }
 
     }
 
     return {
+        loading,
+        successMsg,
         sender,
         setSender,
         setPost,
