@@ -100,7 +100,7 @@ function Section1() {
               {result?.datas?.length > 0 && (
                 <>
                   <p className="text-green-600 mb-4">
-                    This sender has : {result.datas.length} message(s)
+                    This sender has : {result.datas.length} messages
                   </p>
 
                   <div className="space-y-3 overflow-y-scroll h-40 ">
