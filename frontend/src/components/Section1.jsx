@@ -99,9 +99,7 @@ function Section1() {
 
               {result?.datas?.length > 0 && (
                 <>
-                  <p className="text-green-600 mb-4">
-                    This sender has : {result.datas.length} messages
-                  </p>
+                  {result?.datas?.length === 1 ? <p className="text-green-600 mb-4">This sender has : {result.datas.length} message</p> : <p className="text-green-600 mb-4">This sender has : {result.datas.length} messages</p>}
 
                   <div className="space-y-3 overflow-y-scroll h-40 ">
                     {result.datas.map(msg => (
@@ -124,9 +122,6 @@ function Section1() {
                 </>
               )}
 
-              {result?.datas?.length === 0 && (
-                <p className="text-gray-500">No messages found.</p>
-              )}
             </>
           )}
 
@@ -145,9 +140,7 @@ function Section1() {
 
               {result && (
                 <>
-                  <p className="text-green-600 mb-4">
-                    There are : {result.data.length} messages in the DB
-                  </p>
+                  {result?.data?.length === 1 ? <p className="text-green-600 mb-4">There is : {result.data.length} message in the DB</p> : <p className="text-green-600 mb-4">There are : {result.data.length} messages in the DB</p>}
 
                   <div className="space-y-3 overflow-y-scroll h-40">
                     {result.data.map(msg => (
