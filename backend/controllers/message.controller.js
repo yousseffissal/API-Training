@@ -90,6 +90,17 @@ const FindHello = async (req, res, next) => {
 const UpdateHello = async (req, res, next) => {
     try {
         const id = req.params.id;
+        const { message } = req.body;
+        if (!message) {
+            res.status(400).send(
+                {
+                    error: 'Message parameter is required in the request body.'
+                }
+            );
+            console.log('Message parameter is required in the request body.');
+            console.log('-----------------------------');
+            return;
+        }
 
         // Update message from the database
         const UpdateMessage = await Message.findOneAndUpdate(
