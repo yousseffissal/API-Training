@@ -11,6 +11,7 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 8090;
 const MONGO_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@crudtest.odr2zlg.mongodb.net/${process.env.MONGO_DB}?appName=CRUDtest`;
+const FRONT_URL = process.env.FRONT_URL;
 
 // we will need also to install the axios package in the frontend to make HTTP requests to the backend, you can run the following command in your terminal : npm install axios in the frontend, and then you can import it in your frontend files to use it to make requests to the backend. it is a promise-based HTTP client for the browser and node.js, it allows you to make HTTP requests to the backend and handle the responses easily. you can use it to make GET, POST, PUT, DELETE requests to the backend and handle the responses in your frontend code.
 
@@ -23,7 +24,7 @@ const MONGO_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_P
 //----------------------------------------------------------------------------------------------
 // CORS configuration to allow requests only from the frontend URL that is running on port 8090
 const corsOptions = {
-    origin: 'http://localhost:5173', // Replace with your frontend URL
+    origin: FRONT_URL, // Replace with your frontend URL
     optionsSuccessStatus: 200 // For legacy browser support
 };
 
