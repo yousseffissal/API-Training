@@ -3,6 +3,12 @@ import { messagesHook } from '../hooks/messagesHook'
 
 function Section1() {
 
+  //Note : The loading state comes from messagesHook and represents whether an API request is currently in progress. When loading is true, all inputs and buttons are disabled to prevent multiple requests, button text changes to “Loading…”, and a spinner is displayed in the results area. Once the request finishes (success or error), loading becomes false, the loader disappears, and the corresponding result or error is shown.
+  // sender: stores the sender name entered by the user and is used in API requests.
+  // result: contains the successful response data returned from the backend.
+  // error: holds the error message when a request fails.
+  // Request: identifies the last action performed to control which UI content is displayed.
+
   const {
     loading,
     sender,
@@ -10,6 +16,7 @@ function Section1() {
     result,
     error,
     Request,
+    // Functions to interact with the backend API for posting messages
     fetchMessage,
     deleteMessage,
     deleteAll,
@@ -177,6 +184,7 @@ function Section1() {
       </div>
     </div>
   )
+  
 }
 
 export default Section1

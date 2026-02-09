@@ -1,8 +1,8 @@
-// here we will define the controller functions for handling the message routes, and we will import the Message model to interact with the database.
+// Here we will define the controller functions for handling the message routes, and we will import the Message model to interact with the database.
 
-// we used seperater function to separate the logs of each request in the console for better readability, and we used auth function to protect some routes and only allow access to them if the user is logged in and is an admin.
+// We used seperater function to separate the logs of each request in the console for better readability, and we used auth function to protect some routes and only allow access to them if the user is logged in and is an admin.
 
-//the diffrence between middleware and controller functions is that middleware functions are used to perform some operations on the request and response objects before they reach the controller functions, while controller functions are used to handle the logic of the routes and send the appropriate response back to the client. Middleware functions are usually used for tasks such as authentication, logging, error handling, etc., while controller functions are used for tasks such as creating, reading, updating, and deleting data from the database.
+// The diffrence between middleware and controller functions is that middleware functions are used to perform some operations on the request and response objects before they reach the controller functions, while controller functions are used to handle the logic of the routes and send the appropriate response back to the client. Middleware functions are usually used for tasks such as authentication, logging, error handling, etc., while controller functions are used for tasks such as creating, reading, updating, and deleting data from the database.
 
 // Importing the Message model to interact with the database
 const Message = require('../models/message.model.js');
@@ -70,7 +70,7 @@ const FindHello = async (req, res, next) => {
         res.status(200).send(
             {
                 message: 'Message retrieved successfully.',
-                //data ----> datas it's a change to practice we made in the frontend
+                // data ----> datas it's a change to practice we made in the frontend
                 datas: getMessage
             }
         );
@@ -249,7 +249,7 @@ const SayHello = async (req, res, next) => {
     }
 };
 
-// we export the controller functions to be used in the routes file (message.route.js) where we will import them and use them as handlers for the corresponding routes.
+// We export the controller functions to be used in the routes file (message.route.js) where we will import them and use them as handlers for the corresponding routes.
 module.exports = {
     Hello,
     FetchALL,

@@ -1,9 +1,7 @@
-How we can add braking point in tailwind (tailwind.config.js) / we need to rerun the frontend after each change
-------------------------------------------------------------------------
-How the useEffecte helps us to make a timer for the "post" success message (cus we can't use setTimeout methode directly to manipulate the DOM) (Section2.js line 75)
-------------------------------------------------------------------------
-How we used hooks to fetch data from the backend and sending it also using axios and display it in the front using buttons with these hooks
-------------------------------------------------------------------------
-How we make a loader in our porject using useState methode and using it's function in the hooks and the variable in the frontend to display data (Section 1 & 2 + messagesHook.js we use the function in the try/catch blocks and the variable to disable inputs and buttons while processing a request)
-------------------------------------------------------------------------
-how the trim method helps us to verify if the sender field is empty or not
+Personal Notes – To Review Later
+---------------------------------------------------------------
+=> How we can add breakpoints in Tailwind (tailwind.config.js) / we need to rerun the frontend after each change.
+=> How useEffect helps us create a timer for the “post” success message (because we can’t use the setTimeout method directly to manipulate the DOM) (Section2.js, line 75).
+=> How we used hooks to fetch data from the backend and also send it using Axios, and display it on the frontend using buttons with these hooks.
+=> How we created a loader in our project using the useState method, and how we used its function in the hooks and the variable in the frontend to display data (Section 1 & 2 + messagesHook.js: we use the function in the try/catch blocks and the variable to disable inputs and buttons while processing a request).
+=> How the trim method helps us verify whether the sender field is empty or not.

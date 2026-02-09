@@ -9,18 +9,18 @@ function Section2() {
 
     // Destructure the state variables and functions from the useMessages hook to manage message data and interactions with the backend API
     const {
-        // State variables to manage sender input, API result, and error messages
+        // State variables to manage sender input, API result, error messages etc...
         loading,
         post,
         update,
         sender,
+        error,
+        Request,
         successMsg,
         UpdatesuccessMsg,
         setSender,
         setPost,
         setUpdate,
-        error,
-        Request,
         // Functions to interact with the backend API for posting messages
         postMessage,
         updateMessage
@@ -144,6 +144,7 @@ function Section2() {
             </div>
         </div >
     )
+    
 }
 
 export default Section2

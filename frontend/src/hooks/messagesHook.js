@@ -7,7 +7,7 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL
 
 export const messagesHook = () => {
-    // State variables to manage sender input, API result, and error messages
+    // State variables to manage sender input, API result, error messages, request type, the post/update content, the loading animation state and success message for the update or post requests.
     const [sender, setSender] = useState('')
     const [result, setResult] = useState(null)
     const [error, setError] = useState('')
@@ -48,13 +48,16 @@ export const messagesHook = () => {
     const fetchMessage = async () => {
         if (!sender.trim()) {
             setError('Please enter a sender name to fetch')
+            // Disactivate the loading - no action here - initial state
             setLoading(false);
             return;
         }
 
 
         try {
+            // Activate the loading - we are in the action
             setLoading(true);
+            // The initial values for error and result - If we don't do it, we may get previous results.
             setError('')
             setResult(null)
             setRequest('FetchMessage') // Set the current request type to FetchMessage
@@ -82,6 +85,7 @@ export const messagesHook = () => {
                 err.response?.data?.error || 'Error while fetching data'
             )
         } finally {
+            // When the action ends we disactivate the loading again
             setLoading(false);
         }
     }
@@ -102,7 +106,6 @@ export const messagesHook = () => {
 
             const response = await axios.delete(
                 `${API_URL}/messages/DeleteHello/${sender}`,
-                // We can pass query parameters in the request to the backend to provide additional information about the request, for example we can pass a parameter called loggedIn to indicate whether the user is logged in or not, and a parameter called admin to indicate whether the user is an admin or not, and we can access these parameters in the backend using req.query.loggedIn and req.query.admin respectively, and we can use these parameters to implement different logic in the backend based on the user's authentication and authorization status, for example we can allow only logged-in users to access certain endpoints, or we can allow only admin users to perform certain actions in the backend. so in this case we are passing loggedIn as true and admin as true as query parameters in the request to the backend.
                 {
                     params: {
                         loggedIn: true,
@@ -132,7 +135,6 @@ export const messagesHook = () => {
 
             const response = await axios.delete(
                 `${API_URL}/messages/DeleteAll`,
-                // We can pass query parameters in the request to the backend to provide additional information about the request, for example we can pass a parameter called loggedIn to indicate whether the user is logged in or not, and a parameter called admin to indicate whether the user is an admin or not, and we can access these parameters in the backend using req.query.loggedIn and req.query.admin respectively, and we can use these parameters to implement different logic in the backend based on the user's authentication and authorization status, for example we can allow only logged-in users to access certain endpoints, or we can allow only admin users to perform certain actions in the backend. so in this case we are passing loggedIn as true and admin as true as query parameters in the request to the backend.
                 {
                     params: {
                         loggedIn: true,
@@ -280,5 +282,6 @@ export const messagesHook = () => {
         fetchAll,
         postMessage,
         updateMessage
-    };
-};
+    }
+
+}

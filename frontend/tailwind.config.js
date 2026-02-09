@@ -7,10 +7,9 @@ export default {
   theme: {
     extend: {
       screens: {
-        custom: '1050px', //our brakepoint for the screen
+        custom: '1050px', // Our brakepoint for the screen
       },
     },
   },
   plugins: [],
 }
-

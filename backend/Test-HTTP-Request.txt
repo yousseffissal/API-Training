@@ -1,4 +1,4 @@
-These are some exemples to try the CRUD API that we make : 
+These are some exemples to try the API that we make (You can use postman) : 
 -----------------------------------------------------------------------------------------
 
 Send a message to te DB By ID :
