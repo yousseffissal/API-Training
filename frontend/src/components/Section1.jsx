@@ -96,7 +96,7 @@ function Section1() {
 
           {/* Default text */}
           {!loading && Request === '' && (
-            <p className="text-gray-500 mb-4">Results will appear here</p>
+            <p className="text-gray-500 mb-4">Results will appear here !</p>
           )}
 
           {/* Fetch Message */}
