@@ -30,6 +30,10 @@ Follow the steps in this guide (recommended version): https://v3.tailwindcss.com
 In the src folder, you can delete App.css and the assets folder if you want. Leave just App.jsx (the file we will work on—delete everything and use the rfce snippet to write a clean one; install the extension for it), index.css (used to link Tailwind CSS classes with index.html, which is the main HTML page; we can change the page name here), and main.jsx (which renders App.jsx and can use modes, providers, etc.).  
 **Explanation:** Simplifies the folder structure and focuses development on your main components.
 
+=> npm install react-router-dom :
+---------------------------------
+It will help us to manipulate routes in our project (neccessary if we will not going to use strictMode which means that we will have many pages in our project)
+
 Backend :
 => npm init -y :
 ------------------------------
@@ -50,6 +54,7 @@ This installs the necessary packages for MongoDB and adds them to project depend
 -------------------------------------------
 This installs Nodemon as a devDependency to rerun the server automatically after every code change. To use it, make a new script such as 'dev' in package.json: `"dev": "nodemon <main-file>.js"`. Run once with `npm run dev`. The server will restart automatically whenever changes are made.  
 **Explanation:** Saves time during development by avoiding manual restarts.
+(The -D indicate that it's a devDependencie)
 
 => npm install dotenv :
 --------------------------
