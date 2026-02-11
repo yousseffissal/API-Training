@@ -1,14 +1,9 @@
-import Section1 from './components/Section1.jsx'
-import Section2 from './components/Section2.jsx'
+// The outlet component will help us to make sure that the component that will mount on the screen in a specific route is the component that we specified in the router (One component each time/ for each route, it can be pages or just one component)
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div className='p-2 min-h-screen flex items-center justify-center bg-gray-100'>
-      <div className='h-2/4 min-w-3/4 flex flex-col justify-center custom:flex-row items-center gap-3'>
-        <Section1 />
-        <Section2 />
-      </div>
-    </div>
+    <Outlet />
   )
 }
 
