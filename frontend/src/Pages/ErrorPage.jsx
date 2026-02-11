@@ -27,7 +27,7 @@ function ErrorPage() {
 
     return (
         // Main container that centers content both vertically and horizontally
-        <div className="relative flex flex-col items-center justify-center min-h-screen" >
+        <div className="relative flex flex-col items-center justify-center min-h-screen bg-gray-100" >
             
             {/* Content wrapper: width and height fit the content, text centered */}
             <div className="flex flex-col text-center text-black px-6 w-fit h-fit justify-center items-center" >

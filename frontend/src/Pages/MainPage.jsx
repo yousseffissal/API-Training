@@ -5,7 +5,7 @@ import Section2 from '../components/Section2.jsx'
 
 function MainPage() {
     return (
-        <div className='p-2 min-h-screen flex items-center justify-center bg-white'>
+        <div className='p-2 min-h-screen flex items-center justify-center bg-gray-100'>
             <div className='h-2/4 min-w-3/4 flex flex-col justify-center custom:flex-row items-center gap-3'>
                 <Section1 />
                 <Section2 />
