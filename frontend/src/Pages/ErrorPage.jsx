@@ -36,7 +36,7 @@ function ErrorPage() {
                 <img 
                     src={errorImage} 
                     alt="Error illustration" 
-                    className="w-full max-w-lg mx-auto object-contain mb-4" 
+                    className="w-full max-w-lg mx-auto object-contain mb-4 rounded-2xl" 
                     // w-full: image fills container width
                     // max-w-lg: limits image width for large screens
                     // object-contain: maintain aspect ratio without stretching
