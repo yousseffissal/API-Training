@@ -56,7 +56,7 @@ function ErrorPage() {
                 {/* Small Back Home Button */}
                 <a
                     href="/"
-                    className="inline-block bg-red-800 text-white rounded-full px-6 py-2 text-sm font-medium border border-red-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-red-800 hover:border hover:border-red-800"
+                    className="inline-block bg-red-800 text-white rounded-full px-6 py-2 text-sm font-medium border border-red-800 transition-all duration-300 ease-in-out hover:bg-transparent hover:text-red-800 hover:border hover:border-red-800"
                     // inline-block: allows padding and width based on content
                     // bg-black / text-white: default button colors
                     // rounded-full: makes button pill-shaped
