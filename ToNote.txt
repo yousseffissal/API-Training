@@ -5,3 +5,53 @@ Personal Notes – To Review Later
 => How we used hooks to fetch data from the backend and also send it using Axios, and display it on the frontend using buttons with these hooks.
 => How we created a loader in our project using the useState method, and how we used its function in the hooks and the variable in the frontend to display data (Section 1 & 2 + messagesHook.js: we use the function in the try/catch blocks and the variable to disable inputs and buttons while processing a request).
 => How the trim method helps us verify whether the sender field is empty or not.
+
+Error handling
+---------------------------------------------------------------
+In React, the useRouteError() hook only captures errors related to the current route, such as a 404 URL not found or a JavaScript error thrown inside a route component:
+// Example: route component throwing an error
+function Home() {
+  throw new Error("Something went wrong in Home component");
+}
+If your backend API returns a 404 (for example, a resource is not found), this does not automatically trigger useRouteError(), because React Router has no knowledge of API responses:
+// Example: backend returning 404
+// Express.js backend
+app.get("/api/item/:id", (req, res) => {
+  const item = db.find(i => i.id === req.params.id);
+  if (!item) {
+    return res.status(404).json({ error: "Item not found" });
+  }
+  res.json(item);
+});
+To show such backend errors in a route-level ErrorPage, you would need to manually throw a response or error inside the component handling the API request:
+// Frontend React component throwing backend error to ErrorPage
+import { useEffect } from "react";
+import axios from "axios";
+
+function ItemPage() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("/api/item/123");
+      } catch (err) {
+        // Manually throw the error so ErrorPage can catch it
+        throw new Response(err.response?.status || 500, {
+          statusText: err.response?.data?.error || "Unknown Error"
+        });
+      }
+    };
+    fetchData();
+  }, []);
+}
+Otherwise, the typical approach is to catch the backend error locally within the component and display it to the user directly, which is often preferable for API calls since it avoids redirecting the user to a separate error page just like how we did it:
+// Handling API error locally in the component
+const [error, setError] = useState("");
+
+const fetchData = async () => {
+  try {
+    const res = await axios.get("/api/item/123");
+    setData(res.data);
+  } catch (err) {
+    setError(err.response?.data?.error || "Unknown error");
+  }
+};
