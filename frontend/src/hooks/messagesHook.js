@@ -8,6 +8,17 @@ const API_URL = import.meta.env.VITE_API_URL
 
 export const messagesHook = () => {
     // State variables to manage sender input, API result, error messages, request type, the post/update content, the loading animation state and success message for the update or post requests.
+    /*
+    Note on `sender` state initialization:
+
+    - In React, controlled <input> components must have their `value` prop
+        as a string (or undefined for uncontrolled inputs). Passing `null` causes
+        a warning: "value prop on input should not be null".
+
+    - To avoid this warning, we initialize `sender` as an empty string ("") instead of null.
+        This ensures the input is controlled from the start and works correctly with user typing.
+        This prevents React warnings and ensures controlled behavior.
+    */
     const [sender, setSender] = useState('')
     const [result, setResult] = useState(null)
     const [error, setError] = useState('')
