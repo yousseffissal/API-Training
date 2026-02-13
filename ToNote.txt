@@ -63,3 +63,8 @@ We need to use Links tags and ont href attribut for a if we used react-router-do
 i18n react
 ------------------------------------------
 For multilanguage support in our app
+
+NavLink tags
+------------------------------------------
+- Replaced Link with NavLink for navigation items
+- Added dynamic styling based on isActive state
