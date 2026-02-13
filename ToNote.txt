@@ -59,3 +59,7 @@ const fetchData = async () => {
 Routes Links
 ---------------------------------------
 We need to use Links tags and ont href attribut for a if we used react-router-dom to navigate in our app
+
+i18n react
+------------------------------------------
+For multilanguage support in our app
