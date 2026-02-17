@@ -34,6 +34,14 @@ In the src folder, you can delete App.css and the assets folder if you want. Lea
 ---------------------------------
 It will help us to manipulate routes in our project (neccessary if we will not going to use strictMode which means that we will have many pages in our project)
 
+ npm install react-icons --save :
+---------------------------------
+To install react icons
+
+https://favicon.io/favicon-converter/ :
+-----------------------------------
+To make favicons for all devices
+
 Backend :
 => npm init -y :
 ------------------------------
